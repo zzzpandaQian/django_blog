@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}详细页面{% endblock %}
+{% load myfilter %}
+{% block main %}
+
+        <div id="main">
+            <article class="article article-type-post">
+                <div class="article-meta">
+                  <a class="article-date">
+                    <time>{{ obj.created|date:'Y-m-d H:i:s' }}</time>
+                  </a>
+                  <div class="article-category">
+                    <a class="article-category-link" href="#" target="_blank">{{ obj.category.cname }}</a>
+                  </div>
+                </div>
+                <div class="article-inner">
+                    <header class="article-header">
+                        <h1 itemprop="name">
+                            <a class="article-title">{{ obj.pname }}</a>
+                        </h1>
+                    </header>
+                    <div class="article-entry" itemprop="articleBody">
+                        <h2>前言</h2>
+                            {{ obj.desc }}
+                        <hr>
+                            {{ obj.content|md|safe }}
+                    </div>
+                </div>
+            </article>
+        </div>
+{% endblock %}
